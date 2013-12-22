@@ -55,13 +55,14 @@ public class SmartSentsGen {
 
 			sqlstr = "select Keyword from keywords where Locale='" + locale
 					+ "' and Themes='" + themes
-					+ "' order by Hits desc limit 10;";
+					+ "' order by Hits desc limit 1000;";
 
 			keywords = keywdDBHandler.get(con, sqlstr);
 
-//			sentencesfile = "/home/juno/git/goFastCgi/goFastCgi/markresources/fi_FI_finance/all_fi_FI_finance.txt";
-			
-			sentencesfile = "all_"+locale+"_"+themes+".txt";
+			// sentencesfile =
+			// "/home/juno/git/goFastCgi/goFastCgi/markresources/fi_FI_finance/all_fi_FI_finance.txt";
+
+			sentencesfile = "all_" + locale + "_" + themes + ".txt";
 
 			BufferedReader br = new BufferedReader(
 					new FileReader(sentencesfile));
@@ -89,7 +90,6 @@ public class SmartSentsGen {
 						}
 
 					}
-
 				}
 
 			}
@@ -97,7 +97,7 @@ public class SmartSentsGen {
 			out.close();
 
 			SentsGeneratorImpl sentsGenerator = new SentsGeneratorImpl();
-			
+
 			Collections.shuffle(keywords);
 
 			sentensesArr = new ArrayList<String>();
@@ -109,12 +109,11 @@ public class SmartSentsGen {
 				sentensesArr.add(sentense);
 
 			}
-			
-			SentsFileImpl sentsFile = new SentsFileImpl();			
-			sentsFile.create(locale, themes, sentensesArr);
-			
-		}
 
+			SentsFileImpl sentsFile = new SentsFileImpl();
+			sentsFile.create(locale, themes, sentensesArr);
+
+		}
 	}
 
 }
