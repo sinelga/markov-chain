@@ -77,6 +77,9 @@ public class SmartSentsGen {
 
 			while ((line = br.readLine()) != null) {
 
+				line = line.replaceAll("\\p{P}", " ");				
+				line = line.replaceAll("\\s+", " ").trim();
+				
 				String[] stlitbyspace = line.split("\\s+");
 
 				for (String word : stlitbyspace) {

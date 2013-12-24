@@ -1,0 +1,1 @@
+for i in {1..15}; do java -jar markov-chains-0.0.1-SNAPSHOT-jar-with-dependencies.jar fi_FI finance ; done
